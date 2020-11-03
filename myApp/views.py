@@ -120,7 +120,7 @@ def listCompleteView(request, pk):
 def showWarningsView(request):
     user = request.user
     current_date = datetime.date.today()
-    time_delta = datetime.timedelta(days=3)
+    time_delta = datetime.timedelta(days=7)
     margin_date = current_date - time_delta
     post_instance = Post.objects.filter(author=user.id, completion_status=False, modified_date__lte=margin_date)
 
