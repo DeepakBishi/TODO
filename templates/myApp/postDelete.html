@@ -1,0 +1,13 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+  <title>Post Delete</title>
+{% endblock %}
+
+{% block body_block %}
+  <h3>Are sure want to delete the [{{ post_delete.title }}]???</h3>
+  <form method="POST">
+      {% csrf_token %}
+      <input type="submit" class="btn btn-danger" value="Delete">
+  </form>
+{% endblock %}

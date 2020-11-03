@@ -1,0 +1,17 @@
+{% extends 'accounts/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+  <title>Post Delete</title>
+{% endblock %}
+
+{% block body_block %}
+  <h1>Update Activity</h1>
+  <br>
+  <form method="POST">
+      {% csrf_token %}
+      {{ form | crispy }}
+      <input type="submit" class="btn btn-success" value="Update">
+  </form>
+{% endblock %}

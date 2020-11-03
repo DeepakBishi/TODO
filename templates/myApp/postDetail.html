@@ -1,0 +1,20 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+  <title>Post Detail</title>
+{% endblock %}
+
+{% block body_block %}
+  <h2>{{ postDetails.title }}</h2>
+  <h3>{{ postDetails.post }}</h3>
+  <h4>type: {{ postDetails.post_type }}</h4>
+  <a href="{% url 'myApp:mytodo_update' postDetails.pk %}">
+    <input class="btn btn-primary" type="submit" value="Edit">
+  </a>
+  <a href="{% url 'myApp:mytodo_complete' postDetails.pk %}">
+    <input class="btn btn-info" type="submit" value="Save as Completed">
+  </a>
+  <a href="{% url 'myApp:mytodo_delete' postDetails.pk %}">
+    <input class="btn btn-danger" type="submit" value="Delete">
+  </a>
+{% endblock %}

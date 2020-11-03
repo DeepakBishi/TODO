@@ -1,0 +1,26 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+  <title>My Activities</title>
+{% endblock %}
+
+
+{% block body_block %}
+  {% if posts %}
+    <h2>You Have Warnings[Jobs Older Than 7 days] For...</h2>
+    <br>
+  {% endif %}
+  {% for post in posts %}
+  
+    <div class="box box-primary">
+      <ul><a href="{% url 'myApp:mytodo_completed_details' post.id %}">{{ post.title }}</a></ul>
+      <ul>{{ post.post }}</ul>
+      <ul id="type">{{ post.post_type }}</ul>
+    </div>
+  {% endfor %}
+  {% if posts %}
+    {% include 'accounts/paginator.html' with page=posts %}
+  {% else %}
+    <h2>You Don't Have any Warnings[Jobs Older Than 7 days]...</h2>
+  {% endif %}
+{% endblock %}

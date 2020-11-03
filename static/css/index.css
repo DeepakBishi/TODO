@@ -1,0 +1,17 @@
+body{
+  background-image: url('../images/home.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container p{
+  font-family: 'Alike Angular';
+  font-size: 25px;
+  color: black;
+  padding-top: 90px;
+}
+
+.container input{
+  margin-left: 40%;
+  padding: 10px 30px;
+}

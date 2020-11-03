@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Alegreya SC' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'css/base.css'%}">
+    {% block title %}
+    {% endblock %}
+</head>
+
+<body>
+    <header>
+            <input type="checkbox" name="" id="check">
+            <div class="nav-btn">
+                <div class="nav-links">
+                    <ul>                
+                        <li class="nav-link" style="--i: 1.35s">
+                            <a href="{% url 'myApp:mytodo_list' %}">MyToDo</a>
+                        </li>
+                        <li class="nav-link" style="--i: 1.35s">
+                            <a href="{% url 'myApp:mytodo_completed' %}">Completed</a>
+                        </li>
+                        <li class="nav-link" style="--i: 1.35s">
+                            <a href="{% url 'myApp:warnings' %}">Warning</a>
+                        </li>
+                        <li class="nav-link" style="--i: 1.35s">
+                            <a href="{% url 'admin:index' %}">Admin</a>
+                        </li>
+                        <li class="nav-link" style="--i: 1.35s">
+                            <a href="{% url 'myApp:about' %}">About</a>
+                        </li>
+                        
+                        <li class="nav-link" style="--i: .85s">
+                            <a id="emailCheck" href="#">
+                                {% if user.is_authenticated %}
+                                    {{ user.email }}
+                                {% endif %}
+                                <i class="fas fa-caret-down"></i></a>
+                            <div class="dropdown">
+                                <ul>
+                                    <li class="dropdown-link">
+                                        <a href="/logout">Log Out</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="/changepassword/{{ user.email }}">Change Password</a>
+                                    </li>                                    
+                                </ul>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+    </header>
+    <main>
+        <section>
+            <div class="overlay">
+              <div class="container">
+                {% block body_block %}
+                {% endblock %}
+              </div>              
+            </div>
+        </section>
+    </main>
+    
+</body>
+
+</html>

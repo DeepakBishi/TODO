@@ -1,0 +1,25 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+  <title>My Activities</title>
+{% endblock %}
+
+
+{% block body_block %}
+  <a href="{% url 'myApp:add_list' %}">
+    <input class="btn btn-success" id="addnew" type="submit" value="Add to Card">
+  </a>
+  <p></p>
+  {% for post in posts %}
+    <div class="box box-primary">
+      <ul><a href="{% url 'myApp:mytodo_details' post.id %}">{{ post.title }}</a></ul>
+      <ul>{{ post.post }}</ul>
+      <ul id="type">{{ post.post_type }} | {{ post.modified_date }}</ul>
+    </div>
+  {% endfor %}
+  {% if posts %}
+    {% include 'accounts/paginator.html' with page=posts %}
+  {% else %}
+    <h2>You Don't Have any Activity Added...</h2>
+  {% endif %}
+{% endblock %}
